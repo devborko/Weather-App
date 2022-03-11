@@ -37,7 +37,9 @@ public class WeatherHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
     fun updateWithPage(weather: Weather) {
-        tvHour.text = weather.hour.toString() //timestamp
+        val sdf = SimpleDateFormat("HH:mm")
+        val netDate = Date(weather.hour * 1000)
+        tvHour.text = sdf.format(netDate)
         tvHumidity.text = "Humidity: ${weather.humidity.toString()}"
         tvTemperature.text ="Temperature: ${weather.temperature.toString()}C"
         tvWindSpeed.text = "Wind Speed: ${weather.wind_speed.toString()} km/h"
