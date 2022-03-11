@@ -1,6 +1,8 @@
 package com.example.weatherapp.ViewModels
 
+import android.content.pm.PackageManager
 import android.util.Log
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.weatherapp.Classes.Weather
@@ -10,6 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.jar.Manifest
 
 class WeatherViewModel(private val repository: WeatherRepository): ViewModel() {
     val weatherLiveData : MutableLiveData<List<Weather>> = MutableLiveData()
@@ -17,7 +20,7 @@ class WeatherViewModel(private val repository: WeatherRepository): ViewModel() {
 
     val scope = CoroutineScope(Dispatchers.IO)
 
-    fun getCurrTemp(lat: Double, lon: Double, appid: String){
+    fun getWeather(lat: Double, lon: Double, appid: String){
         scope.launch {
             val response = repository.getWeather(lat,lon,appid)
 
