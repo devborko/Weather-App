@@ -3,6 +3,7 @@ package com.example.weatherapp.ViewModels
 import android.content.pm.PackageManager
 import android.util.Log
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.weatherapp.Classes.Weather
@@ -20,9 +21,9 @@ class WeatherViewModel(private val repository: WeatherRepository): ViewModel() {
 
     val scope = CoroutineScope(Dispatchers.IO)
 
-    fun getWeather(lat: Double, lon: Double, appid: String){
+    fun getWeather(lat: Double, lon: Double){
         scope.launch {
-            val response = repository.getWeather(lat,lon,appid)
+            val response = repository.getWeather(lat,lon)
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
@@ -39,4 +40,6 @@ class WeatherViewModel(private val repository: WeatherRepository): ViewModel() {
             }
         }
     }
+
+    fun getData() = weatherLiveData as LiveData<List<Weather>>
 }

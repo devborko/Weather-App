@@ -7,9 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.Classes.Weather
 import com.example.weatherapp.R
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class RecyclerViewAdapter: RecyclerView.Adapter<WeatherHolder>() {
-    val currentResults: ArrayList<Weather> = ArrayList<Weather>()
+    var currentResults: ArrayList<Weather> = ArrayList<Weather>()
 
     override fun getItemCount(): Int {
         return currentResults.size
@@ -34,9 +37,9 @@ public class WeatherHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
     fun updateWithPage(weather: Weather) {
-        tvHour.text = weather.hour.toString()
-        tvHumidity.text = weather.humidity.toString()
-        tvTemperature.text = weather.temperature.toString()
-        tvWindSpeed.text = weather.wind_speed.toString()
+        tvHour.text = weather.hour.toString() //timestamp
+        tvHumidity.text = "Humidity: ${weather.humidity.toString()}"
+        tvTemperature.text ="Temperature: ${weather.temperature.toString()}C"
+        tvWindSpeed.text = "Wind Speed: ${weather.wind_speed.toString()} km/h"
     }
 }
