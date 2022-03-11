@@ -3,7 +3,6 @@ package com.example.weatherapp.Views
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import com.example.weatherapp.Networking.WeatherInstance
 import com.example.weatherapp.Networking.WeatherService
 import com.example.weatherapp.R
 import com.example.weatherapp.Repositories.WeatherRepository
